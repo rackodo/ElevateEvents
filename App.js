@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { Appbar, Text } from "react-native-paper";
 
-import "./global.css"
+import "./global.css";
 
 export default function App() {
 	return (

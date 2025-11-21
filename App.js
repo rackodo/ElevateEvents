@@ -1,19 +1,18 @@
-import { Appbar, PaperProvider, Text } from "react-native-paper";
-
-import "./global.css";
-import Main from "./app/index.js";
-import { AppRegistry } from "react-native";
-import BaseLayout from "./app/_layout";
 import { StatusBar } from "expo-status-bar";
+import { PaperProvider } from "react-native-paper";
+import { AppRegistry } from "react-native";
+
+import Main from "./app/today.js";
+import BaseLayout from "./app/_layout";
 
 export default function App() {
 	return (
-		<PaperProvider>
+		<>
 			<BaseLayout>
 				<Main />
 			</BaseLayout>
 			<StatusBar style="auto" />
-		</PaperProvider>
+		</>
 	);
 }
 

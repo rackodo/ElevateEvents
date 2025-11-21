@@ -2,11 +2,11 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import theme from "./theme";
+import theme from "../theme";
 
-import Today from "./screens/Today";
-import Events from "./screens/Events";
-import Settings from "./screens/Settings";
+import Today from "../screens/Today";
+import Events from "../screens/Events";
+import Settings from "../screens/Settings";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,12 +16,12 @@ export default function LayoutTabs() {
 			screenOptions={({ route }) => ({
 				headerShown: false, // no top header
 				tabBarIcon: ({ color, size }) => {
-					let iconName =
-						route.name === "Today"
-							? "home"
-							: route.name === "Events"
-								? "calendar"
-								: "cog";
+					let iconName;
+					switch (route.name) {
+						case "Today": iconName = 'home'; break;
+						case "Events": iconName = 'calendar'; break;
+						case "Settings": iconName = 'cog'; break;
+					}
 
 					return <Icon name={iconName} size={size} color={color} />;
 				},

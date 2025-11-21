@@ -1,6 +1,6 @@
 import { PaperProvider } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
-import LayoutTabs from "./Tabs";
+import LayoutTabs from "./components/Tabs";
 import theme from "./theme"; // optional, can remove if you don't have one
 import { StatusBar } from "expo-status-bar";
 

@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "@react-native-vector-icons/material-design-icons";
 import theme from "@/theme";
 
-import Today from "page/Today"
+import Today from "page/Today";
 import Events from "page/Events";
 import Settings from "page/Settings";
 
@@ -33,8 +33,7 @@ export default function Layout() {
 				tabBarActiveTintColor: theme.colors.primary, // Paper primary color
 				tabBarInactiveTintColor: theme.colors.disabled, // Paper disabled color
 				tabBarStyle: { backgroundColor: theme.colors.background }, // Paper background
-			})}
-		>
+			})}>
 			<Tab.Screen name="Today" component={Today} />
 			<Tab.Screen name="Events" component={Events} />
 			<Tab.Screen name="Settings" component={Settings} />

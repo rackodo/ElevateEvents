@@ -1,11 +1,12 @@
 import { Text } from "react-native-paper";
 
 import GoodView from "comp/GoodView";
+import EventsList from "comp/EventsList";
 
 export default function Today() {
 	return (
 		<GoodView>
-			<Text>Today Screen</Text>
+			<EventsList />
 		</GoodView>
 	);
 }

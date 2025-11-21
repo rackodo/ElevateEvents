@@ -4,7 +4,10 @@ import theme from "@/theme";
 
 export default function GoodView({ children, ...props }) {
 	return (
-		<SafeAreaView style={[styles.goodView, props.style]} {...props}>
+		<SafeAreaView
+			edges={["left", "top", "right"]}
+			style={[styles.goodView, props.style]}
+			{...props}>
 			{children}
 		</SafeAreaView>
 	);

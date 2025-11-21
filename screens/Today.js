@@ -1,6 +1,6 @@
 import { Text } from "react-native-paper";
 
-import GoodView from "@/components/GoodView";
+import GoodView from "comp/GoodView";
 
 export default function Today() {
 	return (

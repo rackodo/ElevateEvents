@@ -1,16 +1,15 @@
-// Tabs.js
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "@react-native-vector-icons/material-design-icons";
-import theme from "../theme";
+import theme from "@/theme";
 
-import Today from "../screens/Today";
-import Events from "../screens/Events";
-import Settings from "../screens/Settings";
+import Today from "page/Today"
+import Events from "page/Events";
+import Settings from "page/Settings";
 
 const Tab = createBottomTabNavigator();
 
-export default function LayoutTabs() {
+export default function Layout() {
 	return (
 		<Tab.Navigator
 			screenOptions={({ route }) => ({
@@ -18,9 +17,15 @@ export default function LayoutTabs() {
 				tabBarIcon: ({ color, size }) => {
 					let iconName;
 					switch (route.name) {
-						case "Today": iconName = 'home'; break;
-						case "Events": iconName = 'calendar'; break;
-						case "Settings": iconName = 'cog'; break;
+						case "Today":
+							iconName = "home";
+							break;
+						case "Events":
+							iconName = "calendar";
+							break;
+						case "Settings":
+							iconName = "cog";
+							break;
 					}
 
 					return <Icon name={iconName} size={size} color={color} />;

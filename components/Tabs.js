@@ -1,7 +1,7 @@
 // Tabs.js
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import Icon from "@react-native-vector-icons/material-design-icons";
 import theme from "../theme";
 
 import Today from "../screens/Today";

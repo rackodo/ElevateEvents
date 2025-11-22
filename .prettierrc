@@ -2,7 +2,8 @@
 	"tabWidth": 4,
 	"useTabs": true,
 	"arrowParens": "always",
-	"bracketSameLine": true,
+	"bracketSameLine": false,
 	"bracketSpacing": true,
-	"quoteProps": "consistent"
+	"quoteProps": "consistent",
+	"trailingComma": "none"
 }

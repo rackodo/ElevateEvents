@@ -4,7 +4,8 @@
 		"paths": {
 			"@/*": ["src/*"],
 			"comp/*": ["src/components/*"],
-			"page/*": ["src/screens/*"]
+			"page/*": ["src/screens/*"],
+			"hook/*": ["src/hooks/*"]
 		}
 	},
 	"exclude": ["node_modules"]

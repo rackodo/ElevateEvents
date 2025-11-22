@@ -1,37 +1,19 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { RefreshControl, View, ScrollView, FlatList } from "react-native";
-import { ActivityIndicator, Chip, Searchbar, Text } from "react-native-paper";
+import theme from "@/theme";
 import EventCard from "comp/EventCard";
 import GoodView from "comp/GoodView";
-import theme from "@/theme";
 import { LinearGradient } from "expo-linear-gradient";
 import moment from "moment";
+import { useCallback, useMemo, useState } from "react";
+import { FlatList, RefreshControl, ScrollView, View } from "react-native";
+import { ActivityIndicator, Chip, Searchbar, Text } from "react-native-paper";
+
+import { useEvents } from "@/hooks/useEvents";
 
 function Events() {
-	const [events, setEvents] = useState([]);
-	const [pulling, setPulling] = useState(false);
+	const { events, loading, refresh } = useEvents(); // ← replaced fetching logic
+
 	const [query, setQuery] = useState("");
 	const [selectedCategories, setSelectedCategories] = useState([]);
-
-	const loadEvents = useCallback(async () => {
-		try {
-			const res = await fetch("https://grmobile.onrender.com/events");
-			const data = await res.json();
-			setEvents(data);
-		} catch (err) {
-			console.error("Failed to load events:", err);
-		}
-	}, []);
-
-	const onPull = useCallback(async () => {
-		setPulling(true);
-		await loadEvents();
-		setPulling(false);
-	}, [loadEvents]);
-
-	useEffect(() => {
-		loadEvents();
-	}, [loadEvents]);
 
 	const uniqueCategories = useMemo(
 		() => [...new Set(events.map((e) => e.category))],
@@ -74,9 +56,8 @@ function Events() {
 				keyExtractor={(item) => String(item.id)}
 				renderItem={({ item }) => <EventCard info={item} />}
 				refreshControl={
-					<RefreshControl refreshing={pulling} onRefresh={onPull} />
+					<RefreshControl refreshing={loading} onRefresh={refresh} />
 				}
-				// Everything above the list
 				ListHeaderComponent={
 					<>
 						<View style={{ paddingHorizontal: 10, paddingTop: 10 }}>
@@ -87,13 +68,15 @@ function Events() {
 								Events
 							</Text>
 						</View>
+
 						<View style={{ padding: 10, flexDirection: "row" }}>
 							<Searchbar
 								style={{ borderRadius: 10, flex: 1 }}
 								onChangeText={setQuery}
 							/>
 						</View>
-						{/* CATEGORY CHIPS SCROLL */}
+
+						{/* CATEGORY CHIPS */}
 						<View style={{ marginBottom: 10 }}>
 							<View style={{ position: "relative" }}>
 								<ScrollView
@@ -126,7 +109,8 @@ function Events() {
 										);
 									})}
 								</ScrollView>
-								{/* Left fade */}
+
+								{/* Left gradient */}
 								<LinearGradient
 									colors={[
 										theme.colors.background,
@@ -143,7 +127,8 @@ function Events() {
 									}}
 									pointerEvents="none"
 								/>
-								{/* Right fade */}
+
+								{/* Right gradient */}
 								<LinearGradient
 									colors={[
 										"rgba(26, 28, 30, 0)",

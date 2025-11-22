@@ -1,5 +1,3 @@
-import { Text } from "react-native-paper";
-
 import GoodView from "comp/GoodView";
 import EventsList from "comp/EventsList";
 

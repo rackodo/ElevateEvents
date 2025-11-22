@@ -3,10 +3,11 @@ import { Card, Text } from "react-native-paper";
 import Icon from "@react-native-vector-icons/material-design-icons";
 import theme from "@/theme";
 import IconText from "./IconText";
+import { memo } from "react";
 
-export default function EventCard({ info }) {
+function EventCard({ info }) {
 	return (
-		<Card onPress={() => console.log(info.title)}>
+		<Card style={{ marginHorizontal: 10, marginBottom: 10 }}>
 			<View
 				style={{
 					padding: 15,
@@ -38,3 +39,5 @@ export default function EventCard({ info }) {
 		</Card>
 	);
 }
+
+export default memo(EventCard);

@@ -4,6 +4,7 @@ import Icon from "@react-native-vector-icons/material-design-icons";
 import theme from "@/theme";
 import IconText from "comp/IconText";
 import { memo } from "react";
+import moment from "moment";
 
 function EventCard({ info }) {
 	return (
@@ -17,12 +18,21 @@ function EventCard({ info }) {
 				}}
 			>
 				<View>
-					<IconText name="tag" text={info.category} />
+					<View style={{ flexDirection: "row", gap: 5 }}>
+						<IconText name="tag" text={info.category} />
+						<IconText
+							name="alarm"
+							text={moment(
+								`${info.date} ${info.startTime}`
+							).fromNow()}
+						/>
+					</View>
 					<Text variant="bodyLarge">
 						{info.title.replace(" REMOTE", "")}
 					</Text>
 					<Text variant="bodySmall">
-						{info.date} | {info.startTime + " - " + info.endTime}
+						{moment(info.date).format("Do MMM YYYY")} |{" "}
+						{info.startTime + " - " + info.endTime}
 					</Text>
 				</View>
 				<View

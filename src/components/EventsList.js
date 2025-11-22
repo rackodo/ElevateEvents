@@ -4,6 +4,7 @@ import { ActivityIndicator, Chip, Searchbar, Text } from "react-native-paper";
 import EventCard from "./EventCard";
 import theme from "@/theme";
 import { LinearGradient } from "expo-linear-gradient";
+import moment from "moment";
 
 function EventList() {
 	const [events, setEvents] = useState([]);
@@ -45,7 +46,12 @@ function EventList() {
 					: true
 			)
 			.filter((event) =>
-				[event.title, event.location, event.description]
+				[
+					event.title,
+					event.location,
+					event.description,
+					moment(event.date).format("MMMM")
+				]
 					.join("")
 					.toLowerCase()
 					.includes(q)

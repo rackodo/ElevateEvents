@@ -2,7 +2,7 @@ import { View } from "react-native";
 import { Card, Text } from "react-native-paper";
 import Icon from "@react-native-vector-icons/material-design-icons";
 import theme from "@/theme";
-import IconText from "./IconText";
+import IconText from "comp/IconText";
 import { memo } from "react";
 
 function EventCard({ info }) {
@@ -13,8 +13,9 @@ function EventCard({ info }) {
 					padding: 15,
 					flexDirection: "row",
 					alignItems: "center",
-					justifyContent: "space-between",
-				}}>
+					justifyContent: "space-between"
+				}}
+			>
 				<View>
 					<IconText name="tag" text={info.category} />
 					<Text variant="bodyLarge">
@@ -27,8 +28,9 @@ function EventCard({ info }) {
 				<View
 					style={{
 						flexDirection: "row",
-						justifyContent: "space-between",
-					}}>
+						justifyContent: "space-between"
+					}}
+				>
 					<Icon
 						name="chevron-right"
 						color={theme.colors.primary}

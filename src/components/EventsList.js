@@ -33,7 +33,7 @@ function EventList() {
 
 	const uniqueCategories = useMemo(
 		() => [...new Set(events.map((e) => e.category))],
-		[events],
+		[events]
 	);
 
 	const filteredEvents = useMemo(() => {
@@ -42,13 +42,13 @@ function EventList() {
 			.filter((event) =>
 				selectedCategories.length
 					? selectedCategories.includes(event.category)
-					: true,
+					: true
 			)
 			.filter((event) =>
 				[event.title, event.location, event.description]
 					.join("")
 					.toLowerCase()
-					.includes(q),
+					.includes(q)
 			);
 	}, [events, selectedCategories, query]);
 
@@ -56,7 +56,7 @@ function EventList() {
 		setSelectedCategories((prev) =>
 			prev.includes(category)
 				? prev.filter((c) => c !== category)
-				: [...prev, category],
+				: [...prev, category]
 		);
 	}, []);
 
@@ -74,7 +74,8 @@ function EventList() {
 					<View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
 						<Text
 							variant="displaySmall"
-							style={{ fontWeight: "bold" }}>
+							style={{ fontWeight: "bold" }}
+						>
 							Events
 						</Text>
 					</View>
@@ -94,8 +95,9 @@ function EventList() {
 								showsHorizontalScrollIndicator={false}
 								contentContainerStyle={{
 									gap: 10,
-									paddingHorizontal: 10,
-								}}>
+									paddingHorizontal: 10
+								}}
+							>
 								{uniqueCategories.map((category) => {
 									const selected =
 										selectedCategories.includes(category);
@@ -107,7 +109,8 @@ function EventList() {
 											}
 											onPress={() =>
 												toggleCategory(category)
-											}>
+											}
+										>
 											{category}
 										</Chip>
 									);
@@ -118,7 +121,7 @@ function EventList() {
 							<LinearGradient
 								colors={[
 									theme.colors.background,
-									"rgba(26, 28, 30, 0)",
+									"rgba(26, 28, 30, 0)"
 								]}
 								start={{ x: 0.5, y: 0 }}
 								end={{ x: 1, y: 0 }}
@@ -127,7 +130,7 @@ function EventList() {
 									left: 0,
 									top: 0,
 									bottom: 0,
-									width: 20,
+									width: 20
 								}}
 								pointerEvents="none"
 							/>
@@ -136,7 +139,7 @@ function EventList() {
 							<LinearGradient
 								colors={[
 									"rgba(26, 28, 30, 0)",
-									theme.colors.background,
+									theme.colors.background
 								]}
 								start={{ x: 0, y: 0 }}
 								end={{ x: 0.5, y: 0 }}
@@ -145,7 +148,7 @@ function EventList() {
 									right: 0,
 									top: 0,
 									bottom: 0,
-									width: 20,
+									width: 20
 								}}
 								pointerEvents="none"
 							/>

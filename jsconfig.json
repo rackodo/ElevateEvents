@@ -2,9 +2,9 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./*"],
-			"comp/*": ["./components/*"],
-			"page/*": ["./screens/*"]
+			"@/*": ["src/*"],
+			"comp/*": ["src/components/*"],
+			"page/*": ["src/screens/*"]
 		}
 	},
 	"exclude": ["node_modules"]

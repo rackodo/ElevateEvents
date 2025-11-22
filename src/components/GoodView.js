@@ -7,7 +7,8 @@ export default function GoodView({ children, ...props }) {
 		<SafeAreaView
 			edges={["left", "top", "right"]}
 			style={[styles.goodView, props.style]}
-			{...props}>
+			{...props}
+		>
 			{children}
 		</SafeAreaView>
 	);
@@ -16,6 +17,6 @@ export default function GoodView({ children, ...props }) {
 const styles = StyleSheet.create({
 	goodView: {
 		flex: 1,
-		backgroundColor: theme.colors.background,
-	},
+		backgroundColor: theme.colors.background
+	}
 });

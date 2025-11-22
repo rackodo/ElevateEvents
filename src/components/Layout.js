@@ -32,8 +32,9 @@ export default function Layout() {
 				},
 				tabBarActiveTintColor: theme.colors.primary, // Paper primary color
 				tabBarInactiveTintColor: theme.colors.disabled, // Paper disabled color
-				tabBarStyle: { backgroundColor: theme.colors.background }, // Paper background
-			})}>
+				tabBarStyle: { backgroundColor: theme.colors.background } // Paper background
+			})}
+		>
 			<Tab.Screen name="Today" component={Today} />
 			<Tab.Screen name="Events" component={Events} />
 			<Tab.Screen name="Settings" component={Settings} />

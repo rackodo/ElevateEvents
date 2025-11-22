@@ -4,7 +4,7 @@ import * as col from "./colors.json";
 
 const theme = {
 	...DefaultTheme,
-	colors: col.colors,
+	colors: col.colors
 };
 
 export default theme;

@@ -8,9 +8,10 @@ export default function IconText({ name, text, right, ...props }) {
 		<View
 			style={[
 				{ flex: 0, flexDirection: "row", gap: 5, alignItems: "center" },
-				props.style,
+				props.style
 			]}
-			{...props}>
+			{...props}
+		>
 			{!right ? (
 				<Icon name={name} color={theme.colors.primary} size={16} />
 			) : (

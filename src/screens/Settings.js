@@ -4,8 +4,10 @@ import GoodView from "comp/GoodView";
 
 export default function Settings() {
 	return (
-		<GoodView>
-			<Text>Settings Screen</Text>
+		<GoodView style={{ padding: 10 }}>
+			<Text variant="displaySmall" style={{ fontWeight: "bold" }}>
+				Settings
+			</Text>
 		</GoodView>
 	);
 }

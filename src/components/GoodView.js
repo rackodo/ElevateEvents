@@ -2,11 +2,11 @@ import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import theme from "@/theme";
 
-export default function GoodView({ children, ...props }) {
+export default function GoodView({ children, style, ...props }) {
 	return (
 		<SafeAreaView
 			edges={["left", "top", "right"]}
-			style={[styles.goodView, props.style]}
+			style={[styles.goodView, style]}
 			{...props}
 		>
 			{children}
@@ -17,6 +17,7 @@ export default function GoodView({ children, ...props }) {
 const styles = StyleSheet.create({
 	goodView: {
 		flex: 1,
+		gap: 10,
 		backgroundColor: theme.colors.background
 	}
 });

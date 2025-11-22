@@ -1,6 +1,6 @@
-import { Text } from "react-native-paper";
-
 import GoodView from "comp/GoodView";
+
+import { Text } from "react-native-paper";
 
 export default function Settings() {
 	return (

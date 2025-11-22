@@ -1,6 +1,7 @@
+import theme from "@/theme";
+
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import theme from "@/theme";
 
 export default function GoodView({ children, style, ...props }) {
 	return (
@@ -15,9 +16,5 @@ export default function GoodView({ children, style, ...props }) {
 }
 
 const styles = StyleSheet.create({
-	goodView: {
-		flex: 1,
-		gap: 10,
-		backgroundColor: theme.colors.background
-	}
+	goodView: { flex: 1, gap: 10, backgroundColor: theme.colors.background }
 });

@@ -1,11 +1,11 @@
-import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Icon from "@react-native-vector-icons/material-design-icons";
 import theme from "@/theme";
 
-import Today from "page/Today";
 import Events from "page/Events";
 import Settings from "page/Settings";
+import Today from "page/Today";
+
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Tab = createBottomTabNavigator();
 
@@ -28,7 +28,13 @@ export default function Layout() {
 							break;
 					}
 
-					return <Icon name={iconName} size={size} color={color} />;
+					return (
+						<MaterialCommunityIcons
+							name={iconName}
+							size={size}
+							color={color}
+						/>
+					);
 				},
 				tabBarActiveTintColor: theme.colors.primary, // Paper primary color
 				tabBarInactiveTintColor: theme.colors.disabled, // Paper disabled color

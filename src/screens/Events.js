@@ -1,13 +1,15 @@
-import theme from "@/theme";
-import EventCard from "comp/EventCard";
-import GoodView from "comp/GoodView";
-import { LinearGradient } from "expo-linear-gradient";
-import moment from "moment";
 import { useCallback, useMemo, useState } from "react";
-import { FlatList, RefreshControl, ScrollView, View } from "react-native";
-import { ActivityIndicator, Chip, Searchbar, Text } from "react-native-paper";
 
 import { useEvents } from "@/hooks/useEvents";
+import theme from "@/theme";
+
+import EventCard from "comp/EventCard";
+import GoodView from "comp/GoodView";
+
+import { LinearGradient } from "expo-linear-gradient";
+import moment from "moment";
+import { FlatList, RefreshControl, ScrollView, View } from "react-native";
+import { ActivityIndicator, Chip, Searchbar, Text } from "react-native-paper";
 
 function Events() {
 	const { events, loading, refresh } = useEvents(); // ← replaced fetching logic

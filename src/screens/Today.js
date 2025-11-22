@@ -1,5 +1,6 @@
-import { useNavigation } from "@react-navigation/native";
 import GoodView from "comp/GoodView";
+
+import { useNavigation } from "@react-navigation/native";
 import { Button, Divider, Text } from "react-native-paper";
 
 export default function Today() {

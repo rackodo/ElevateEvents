@@ -5,5 +5,20 @@
 	"bracketSameLine": false,
 	"bracketSpacing": true,
 	"quoteProps": "consistent",
-	"trailingComma": "none"
+	"trailingComma": "none",
+	"objectWrap": "collapse",
+	"plugins": ["@ianvs/prettier-plugin-sort-imports"],
+	"importOrder": [
+		"^react$",
+		"",
+		"@/(.*)$",
+		"",
+		"comp/(.*)$",
+		"",
+		"hook/(.*)$",
+		"",
+		"page/(.*)$",
+		"",
+		"<THIRD_PARTY_MODULES>"
+	]
 }

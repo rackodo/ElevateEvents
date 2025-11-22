@@ -1,10 +1,13 @@
+import { memo } from "react";
+
+import theme from "@/theme";
+
+import IconText from "comp/IconText";
+
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import moment from "moment";
 import { View } from "react-native";
 import { Card, Text } from "react-native-paper";
-import Icon from "@react-native-vector-icons/material-design-icons";
-import theme from "@/theme";
-import IconText from "comp/IconText";
-import { memo } from "react";
-import moment from "moment";
 
 function EventCard({ info }) {
 	return (
@@ -41,7 +44,7 @@ function EventCard({ info }) {
 						justifyContent: "space-between"
 					}}
 				>
-					<Icon
+					<MaterialCommunityIcons
 						name="chevron-right"
 						color={theme.colors.primary}
 						size={36}

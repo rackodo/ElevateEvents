@@ -39,7 +39,7 @@ export default function Today() {
 			</Button>
 			<View>
 				{filteredEvents.map((event) => (
-					<EventCard key={event.id} info={event} />
+					<EventCard key={event.id} info={event} from="Today" />
 				))}
 			</View>
 		</GoodView>

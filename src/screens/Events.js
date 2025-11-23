@@ -57,7 +57,9 @@ function Events() {
 			<FlatList
 				data={filteredEvents}
 				keyExtractor={(item) => String(item.id)}
-				renderItem={({ item }) => <EventCard info={item} />}
+				renderItem={({ item }) => (
+					<EventCard info={item} from="Events" />
+				)}
 				refreshControl={
 					<RefreshControl refreshing={loading} onRefresh={refresh} />
 				}

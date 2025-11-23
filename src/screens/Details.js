@@ -57,7 +57,7 @@ export default function Details({ route }) {
 						mode="contained"
 						style={{ borderRadius: 10, marginTop: 20 }}
 						onPress={() =>
-							navigation.navigate("Register", { info: info })
+							navigation.navigate("Register", { info })
 						}
 					>
 						Register

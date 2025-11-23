@@ -10,13 +10,15 @@ import moment from "moment";
 import { View } from "react-native";
 import { Card, Text } from "react-native-paper";
 
-function EventCard({ info }) {
+function EventCard({ info, from }) {
 	const navigation = useNavigation();
 
 	return (
 		<Card
 			style={{ marginBottom: 10 }}
-			onPress={() => navigation.navigate("Details", { info: info })}
+			onPress={() =>
+				navigation.navigate("Details", { info: info, fromTab: from })
+			}
 		>
 			<View
 				style={{

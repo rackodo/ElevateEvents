@@ -11,13 +11,13 @@
 	"importOrder": [
 		"^react$",
 		"",
+		"@/components/(.*)$",
+		"",
+		"@/hooks/(.*)$",
+		"",
+		"@/screens/(.*)$",
+		"",
 		"@/(.*)$",
-		"",
-		"comp/(.*)$",
-		"",
-		"hook/(.*)$",
-		"",
-		"page/(.*)$",
 		"",
 		"<THIRD_PARTY_MODULES>"
 	]

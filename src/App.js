@@ -1,18 +1,18 @@
-import theme from "@/theme"; // optional, can remove if you don't have one
+import Layout from "@/components/Layout";
 
-import Layout from "comp/Layout";
+import theme from "@/theme";
 
-import { NavigationContainer } from "@react-navigation/native";
+import { registerRootComponent } from "expo";
 import { StatusBar } from "expo-status-bar";
 import { PaperProvider } from "react-native-paper";
 
 export default function App() {
 	return (
 		<PaperProvider theme={theme}>
-			<NavigationContainer>
-				<Layout />
-			</NavigationContainer>
+			<Layout />
 			<StatusBar />
 		</PaperProvider>
 	);
 }
+
+registerRootComponent(App);

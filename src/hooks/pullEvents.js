@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-export function useEvents() {
+export function pullEvents() {
 	const [events, setEvents] = useState([]);
 	const [loading, setLoading] = useState(false);
 

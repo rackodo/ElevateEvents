@@ -1,4 +1,4 @@
-import GoodView from "comp/GoodView";
+import GoodView from "@/components/GoodView";
 
 import { Text } from "react-native-paper";
 

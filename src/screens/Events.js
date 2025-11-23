@@ -1,10 +1,11 @@
 import { useCallback, useMemo, useState } from "react";
 
-import { useEvents } from "@/hooks/useEvents";
-import theme from "@/theme";
+import EventCard from "@/components/EventCard";
+import GoodView from "@/components/GoodView";
 
-import EventCard from "comp/EventCard";
-import GoodView from "comp/GoodView";
+import { pullEvents } from "@/hooks/pullEvents";
+
+import theme from "@/theme";
 
 import { LinearGradient } from "expo-linear-gradient";
 import moment from "moment";
@@ -12,7 +13,7 @@ import { FlatList, RefreshControl, ScrollView, View } from "react-native";
 import { ActivityIndicator, Chip, Searchbar, Text } from "react-native-paper";
 
 function Events() {
-	const { events, loading, refresh } = useEvents(); // ← replaced fetching logic
+	const { events, loading, refresh } = pullEvents(); // ← replaced fetching logic
 
 	const [query, setQuery] = useState("");
 	const [selectedCategories, setSelectedCategories] = useState([]);
@@ -62,7 +63,7 @@ function Events() {
 				}
 				ListHeaderComponent={
 					<>
-						<View style={{ paddingHorizontal: 10, paddingTop: 10 }}>
+						<View style={{ paddingTop: 10 }}>
 							<Text
 								variant="displaySmall"
 								style={{ fontWeight: "bold" }}
@@ -71,7 +72,12 @@ function Events() {
 							</Text>
 						</View>
 
-						<View style={{ padding: 10, flexDirection: "row" }}>
+						<View
+							style={{
+								paddingVertical: 10,
+								flexDirection: "row"
+							}}
+						>
 							<Searchbar
 								style={{ borderRadius: 10, flex: 1 }}
 								onChangeText={setQuery}
@@ -84,10 +90,7 @@ function Events() {
 								<ScrollView
 									horizontal
 									showsHorizontalScrollIndicator={false}
-									contentContainerStyle={{
-										gap: 10,
-										paddingHorizontal: 10
-									}}
+									contentContainerStyle={{ gap: 10 }}
 								>
 									{uniqueCategories.map((category) => {
 										const selected =
@@ -118,7 +121,7 @@ function Events() {
 										theme.colors.background,
 										"rgba(26, 28, 30, 0)"
 									]}
-									start={{ x: 0.5, y: 0 }}
+									start={{ x: 0, y: 0 }}
 									end={{ x: 1, y: 0 }}
 									style={{
 										position: "absolute",
@@ -137,7 +140,7 @@ function Events() {
 										theme.colors.background
 									]}
 									start={{ x: 0, y: 0 }}
-									end={{ x: 0.5, y: 0 }}
+									end={{ x: 1, y: 0 }}
 									style={{
 										position: "absolute",
 										right: 0,
@@ -159,7 +162,10 @@ function Events() {
 						style={{ marginTop: 30 }}
 					/>
 				}
-				contentContainerStyle={{ paddingBottom: 10 }}
+				contentContainerStyle={{
+					paddingBottom: 10,
+					paddingHorizontal: 10
+				}}
 			/>
 		</GoodView>
 	);

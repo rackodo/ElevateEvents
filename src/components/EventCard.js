@@ -1,17 +1,23 @@
 import { memo } from "react";
 
+import IconText from "@/components/IconText";
+
 import theme from "@/theme";
 
-import IconText from "comp/IconText";
-
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import moment from "moment";
 import { View } from "react-native";
 import { Card, Text } from "react-native-paper";
 
 function EventCard({ info }) {
+	const navigation = useNavigation();
+
 	return (
-		<Card style={{ marginHorizontal: 10, marginBottom: 10 }}>
+		<Card
+			style={{ marginBottom: 10 }}
+			onPress={() => navigation.navigate("Details", { info: info })}
+		>
 			<View
 				style={{
 					padding: 15,

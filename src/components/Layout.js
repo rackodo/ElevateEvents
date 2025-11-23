@@ -1,15 +1,20 @@
-import theme from "@/theme";
+import Details from "@/screens/Details";
+import Events from "@/screens/Events";
+import Register from "@/screens/Register";
+import Settings from "@/screens/Settings";
+import Today from "@/screens/Today";
 
-import Events from "page/Events";
-import Settings from "page/Settings";
-import Today from "page/Today";
+import theme from "@/theme";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function Layout() {
+function Tabs() {
 	return (
 		<Tab.Navigator
 			screenOptions={({ route }) => ({
@@ -45,5 +50,37 @@ export default function Layout() {
 			<Tab.Screen name="Events" component={Events} />
 			<Tab.Screen name="Settings" component={Settings} />
 		</Tab.Navigator>
+	);
+}
+
+export default function App() {
+	return (
+		<NavigationContainer>
+			<Stack.Navigator screenOptions={{ headerShown: true }}>
+				<Stack.Screen
+					name="MainTabs"
+					component={Tabs}
+					options={{ headerShown: false }}
+				/>
+				<Stack.Screen
+					name="Details"
+					component={Details}
+					options={({ route }) => ({
+						headerTintColor: "#fff",
+						headerBackTitle: route.params?.fromTab ?? "Back",
+						headerTransparent: true
+					})}
+				/>
+				<Stack.Screen
+					name="Register"
+					component={Register}
+					options={({ route }) => ({
+						headerTintColor: "#fff",
+						headerBackTitle: route.params?.fromTab ?? "Back",
+						headerTransparent: true
+					})}
+				/>
+			</Stack.Navigator>
+		</NavigationContainer>
 	);
 }

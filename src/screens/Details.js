@@ -1,10 +1,12 @@
 import GoodView from "@/components/GoodView";
 import IconText from "@/components/IconText";
 
+import theme from "@/theme";
+
 import { useNavigation } from "@react-navigation/native";
 import moment from "moment";
 import { View } from "react-native";
-import { Button, Divider, Text } from "react-native-paper";
+import { Button, Divider, ProgressBar, Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Details({ route }) {
@@ -51,6 +53,76 @@ export default function Details({ route }) {
 				>
 					<IconText name="tag" text={info.category} />
 					<IconText name="pin" text={info.location} right />
+				</View>
+				<Divider />
+				<View>
+					{info.capacity <= 60 ? (
+						<View
+							style={{
+								flexDirection: "row",
+								gap: 3,
+								height: 10,
+								borderRadius: 10,
+								overflow: "hidden"
+							}}
+						>
+							{[...Array(info.spotsRemaining)].map((_, index) => (
+								<View
+									style={{
+										backgroundColor: theme.colors.primary,
+										flex: 1
+									}}
+									key={`remaining${index}`}
+								/>
+							))}
+							{[
+								...Array(info.capacity - info.spotsRemaining)
+							].map((_, index) => (
+								<View
+									style={{
+										backgroundColor:
+											theme.colors.surfaceVariant,
+										flex: 1
+									}}
+									key={`occupied${index}`}
+								/>
+							))}
+						</View>
+					) : (
+						<View
+							style={{
+								flexDirection: "row",
+								height: 10,
+								borderRadius: 10,
+								overflow: "hidden"
+							}}
+						>
+							<View
+								style={{
+									backgroundColor: theme.colors.primary,
+									flex: info.spotsRemaining
+								}}
+							/>
+							<View
+								style={{
+									backgroundColor:
+										theme.colors.surfaceVariant,
+									flex: info.capacity - info.spotsRemaining
+								}}
+							/>
+						</View>
+					)}
+				</View>
+				<View
+					style={{
+						flex: 1,
+						justifyContent: "flex-end",
+						flexDirection: "row"
+					}}
+				>
+					<Text variant="labelMedium">
+						Spots remaining: {info.spotsRemaining}/{info.capacity}
+					</Text>
 				</View>
 				<View style={{ flex: 1, flexDirection: "column-reverse" }}>
 					<Button

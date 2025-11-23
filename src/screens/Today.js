@@ -19,7 +19,8 @@ export default function Today() {
 
 	const filteredEvents = useMemo(() => {
 		return events.filter(
-			(event) => moment(event.date).date() == date.date()
+			(event) =>
+				moment(event.date).format("YYYYMMDD") == date.format("YYYYMMDD")
 		);
 	});
 

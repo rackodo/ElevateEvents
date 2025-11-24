@@ -13,16 +13,19 @@ import { Card, Text } from "react-native-paper";
 function EventCard({ info, from }) {
 	const navigation = useNavigation();
 
+	const date = moment().unix();
+	const lastTime = moment(`${info.date} ${info.endTime}`).unix()
+
 	return (
 		<Card
-			style={{ marginBottom: 10 }}
+			style={{ marginBottom: 10, padding: 15, opacity: date > lastTime ? 0.5 : 1 }}
+			disabled={date > lastTime}
 			onPress={() =>
 				navigation.navigate("Details", { info: info, fromTab: from })
 			}
 		>
 			<View
 				style={{
-					padding: 15,
 					flexDirection: "row",
 					alignItems: "center",
 					justifyContent: "space-between"
@@ -58,6 +61,63 @@ function EventCard({ info, from }) {
 						size={36}
 					/>
 				</View>
+			</View>
+			<View style={{marginTop: 10}}>
+				{info.capacity <= 40 ? (
+					<View
+						style={{
+							flexDirection: "row",
+							gap: 3,
+							height: 5,
+							borderRadius: 10,
+							overflow: "hidden"
+						}}
+					>
+						{[...Array(info.spotsRemaining)].map((_, index) => (
+							<View
+								style={{
+									backgroundColor: theme.colors.primary,
+									flex: 1
+								}}
+								key={`remaining${index}`}
+							/>
+						))}
+						{[...Array(info.capacity - info.spotsRemaining)].map(
+							(_, index) => (
+								<View
+									style={{
+										backgroundColor:
+											theme.colors.surfaceVariant,
+										flex: 1
+									}}
+									key={`occupied${index}`}
+								/>
+							)
+						)}
+					</View>
+				) : (
+					<View
+						style={{
+							flexDirection: "row",
+							height: 5,
+							borderRadius: 10,
+							overflow: "hidden"
+						}}
+					>
+						<View
+							style={{
+								backgroundColor: theme.colors.primary,
+								flex: info.spotsRemaining
+							}}
+						/>
+						<View
+							style={{
+								backgroundColor: theme.colors.surfaceVariant,
+								flex: info.capacity - info.spotsRemaining
+							}}
+						/>
+					</View>
+				)}
 			</View>
 		</Card>
 	);

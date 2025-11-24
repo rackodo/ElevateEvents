@@ -1,5 +1,6 @@
 import GoodView from "@/components/GoodView";
 import IconText from "@/components/IconText";
+
 import { registerEvent } from "@/hooks/registerEvent";
 
 import theme from "@/theme";
@@ -16,6 +17,9 @@ export default function Details({ route }) {
 	const { register } = registerEvent();
 
 	const navigation = useNavigation();
+
+	const date = moment().unix();
+	const firstTime = moment(`${info.date} ${info.startTime}`).unix()
 
 	return (
 		<GoodView>
@@ -131,9 +135,15 @@ export default function Details({ route }) {
 					<Button
 						mode="contained"
 						style={{ borderRadius: 10, marginTop: 20 }}
+						disabled={date > firstTime}
 						onPress={() =>
 							// navigation.navigate("Register", { info })
-							register({ eventId: info.id, name: 'Bash app', email: 'bash@mobile.app', phone: ''})
+							register({
+								eventId: info.id,
+								name: "Bash app",
+								email: "bash@mobile.app",
+								phone: ""
+							})
 						}
 					>
 						Register

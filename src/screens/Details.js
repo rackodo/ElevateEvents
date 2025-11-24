@@ -137,13 +137,7 @@ export default function Details({ route }) {
 						style={{ borderRadius: 10, marginTop: 20 }}
 						disabled={date > firstTime}
 						onPress={() =>
-							// navigation.navigate("Register", { info })
-							register({
-								eventId: info.id,
-								name: "Bash app",
-								email: "bash@mobile.app",
-								phone: ""
-							})
+							navigation.navigate("Register", { info })
 						}
 					>
 						Register

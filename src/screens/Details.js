@@ -1,5 +1,6 @@
 import GoodView from "@/components/GoodView";
 import IconText from "@/components/IconText";
+import { registerEvent } from "@/hooks/registerEvent";
 
 import theme from "@/theme";
 
@@ -11,6 +12,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Details({ route }) {
 	const { info } = route.params;
+
+	const { register } = registerEvent();
 
 	const navigation = useNavigation();
 
@@ -129,7 +132,8 @@ export default function Details({ route }) {
 						mode="contained"
 						style={{ borderRadius: 10, marginTop: 20 }}
 						onPress={() =>
-							navigation.navigate("Register", { info })
+							// navigation.navigate("Register", { info })
+							register({ eventId: info.id, name: 'Bash app', email: 'bash@mobile.app', phone: ''})
 						}
 					>
 						Register

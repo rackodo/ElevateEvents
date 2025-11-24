@@ -2,7 +2,6 @@ import { useCallback } from "react";
 
 export function useRegister() {
 	const register = useCallback(async ({ eventId, name, email, phone }) => {
-		
 		try {
 			const res = await fetch(
 				"https://grmobile.onrender.com/registrations",

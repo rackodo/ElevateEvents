@@ -14,11 +14,15 @@ function EventCard({ info, from }) {
 	const navigation = useNavigation();
 
 	const date = moment().unix();
-	const lastTime = moment(`${info.date} ${info.endTime}`).unix()
+	const lastTime = moment(`${info.date} ${info.endTime}`).unix();
 
 	return (
 		<Card
-			style={{ marginBottom: 10, padding: 15, opacity: date > lastTime ? 0.5 : 1 }}
+			style={{
+				marginBottom: 10,
+				padding: 15,
+				opacity: date > lastTime ? 0.5 : 1
+			}}
 			disabled={date > lastTime}
 			onPress={() =>
 				navigation.navigate("Details", { info: info, fromTab: from })
@@ -62,7 +66,7 @@ function EventCard({ info, from }) {
 					/>
 				</View>
 			</View>
-			<View style={{marginTop: 10}}>
+			<View style={{ marginTop: 10 }}>
 				{info.capacity <= 40 ? (
 					<View
 						style={{

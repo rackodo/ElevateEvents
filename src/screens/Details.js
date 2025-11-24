@@ -19,7 +19,7 @@ export default function Details({ route }) {
 	const navigation = useNavigation();
 
 	const date = moment().unix();
-	const firstTime = moment(`${info.date} ${info.startTime}`).unix()
+	const firstTime = moment(`${info.date} ${info.startTime}`).unix();
 
 	return (
 		<GoodView>

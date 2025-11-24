@@ -10,13 +10,40 @@ import theme from "@/theme";
 import { LinearGradient } from "expo-linear-gradient";
 import moment from "moment";
 import { FlatList, RefreshControl, ScrollView, View } from "react-native";
-import { ActivityIndicator, Chip, Searchbar, Text } from "react-native-paper";
+import {
+	ActivityIndicator,
+	Button,
+	Chip,
+	IconButton,
+	Searchbar,
+	SegmentedButtons,
+	Text
+} from "react-native-paper";
+import { DatePickerModal } from "react-native-paper-dates";
 
 function Events() {
 	const { events, loading, refresh } = pullEvents(); // ← replaced fetching logic
 
 	const [query, setQuery] = useState("");
 	const [selectedCategories, setSelectedCategories] = useState([]);
+
+	const [range, setRange] = useState({
+		startDate: undefined,
+		endDate: undefined
+	});
+	const [modalOpen, setModalOpen] = useState(false);
+
+	const onDismiss = useCallback(() => {
+		setModalOpen(false);
+	}, [setModalOpen]);
+
+	const onConfirm = useCallback(
+		({ startDate, endDate }) => {
+			setModalOpen(false);
+			setRange({ startDate, endDate });
+		},
+		[setModalOpen, setRange]
+	);
 
 	const uniqueCategories = useMemo(
 		() => [...new Set(events.map((e) => e.category))],
@@ -26,23 +53,37 @@ function Events() {
 	const filteredEvents = useMemo(() => {
 		const q = query.toLowerCase().trim();
 		return events
+			.filter((event) => {
+				if (range.startDate || range.endDate) {
+					const comparableDate = Number(
+						moment(event.date).format("YYYYMMDD")
+					);
+					const start = Number(
+						moment(range.startDate).format("YYYYMMDD")
+					);
+					const end = Number(
+						moment(range.endDate).format("YYYYMMDD")
+					);
+
+					if (comparableDate < start) return false;
+					if (comparableDate > end) return false;
+
+					return true;
+				}
+				return true;
+			})
 			.filter((event) =>
 				selectedCategories.length
 					? selectedCategories.includes(event.category)
 					: true
 			)
 			.filter((event) =>
-				[
-					event.title,
-					event.location,
-					event.description,
-					moment(event.date).format("MMMM")
-				]
+				[event.title, event.location, event.description]
 					.join("")
 					.toLowerCase()
 					.includes(q)
 			);
-	}, [events, selectedCategories, query]);
+	}, [events, selectedCategories, query, range]);
 
 	const toggleCategory = useCallback((category) => {
 		setSelectedCategories((prev) =>
@@ -73,7 +114,7 @@ function Events() {
 								Events
 							</Text>
 						</View>
-
+						<View></View>
 						<View
 							style={{
 								paddingVertical: 10,
@@ -81,13 +122,53 @@ function Events() {
 							}}
 						>
 							<Searchbar
-								style={{ borderRadius: 10, flex: 1 }}
+								style={{
+									borderRadius: "10px!important",
+									flex: 1
+								}}
 								onChangeText={setQuery}
 							/>
 						</View>
-
+						<>
+							<View style={{ flexDirection: "row", gap: 10 }}>
+								<Button
+									mode={range.startDate || range.endDate ? "contained" : "outlined"}
+									style={{ flex: 1, borderRadius: 10 }}
+									onPress={() => setModalOpen(true)}
+								>
+									{range.startDate || range.endDate
+										? `${moment(range.startDate).format("Do M, YYYY")} - ${moment(range.endDate).format("Do MMM, YYYY")}`
+										: `Select Range...`}
+								</Button>
+								{range.startDate || range.endDate ? (
+									<IconButton
+										mode="outlined"
+										icon="close"
+										style={{ borderRadius: 10, margin: 0 }}
+										onPress={() =>
+											setRange({
+												startDate: undefined,
+												endDate: undefined
+											})
+										}
+									/>
+								) : (
+									<></>
+								)}
+							</View>
+							<DatePickerModal
+								mode="range"
+								locale="en"
+								label="Select Date Range"
+								visible={modalOpen}
+								onDismiss={onDismiss}
+								startDate={range.startDate}
+								endDate={range.endDate}
+								onConfirm={onConfirm}
+							/>
+						</>
 						{/* CATEGORY CHIPS */}
-						<View style={{ marginBottom: 10 }}>
+						<View style={{ paddingTop: 10, marginBottom: 10 }}>
 							<View style={{ position: "relative" }}>
 								<ScrollView
 									horizontal

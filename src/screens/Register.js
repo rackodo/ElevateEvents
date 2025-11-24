@@ -1,5 +1,6 @@
-import GoodView from "@/components/GoodView";
 import { useState } from "react";
+
+import GoodView from "@/components/GoodView";
 
 import { View } from "react-native";
 import { Divider, Text, TextInput } from "react-native-paper";
@@ -15,45 +16,68 @@ export default function Register({ route }) {
 	const [nameInvalid, setNameInvalid] = useState(false);
 	const [emailInvalid, setEmailInvalid] = useState(false);
 	const [phoneInvalid, setPhoneInvalid] = useState(false);
-false
+	false;
 	const validateName = (testName) => {
-		setName(testName)
+		setName(testName);
 
-		if (typeof(testName) == 'string') {
-			setNameInvalid(false)
+		if (typeof testName == "string") {
+			setNameInvalid(false);
 		} else {
-			setNameInvalid(true)
+			setNameInvalid(true);
 		}
-	}
+	};
 
 	const validateEmail = (testEmail) => {
-		setEmail(testEmail)
+		setEmail(testEmail);
 
 		if (/.+@.+\../.test(testEmail)) {
-			setEmailInvalid(false)
+			setEmailInvalid(false);
 		} else {
-			setEmailInvalid(true)
+			setEmailInvalid(true);
 		}
-	}
+	};
 
 	const validatePhone = (testPhone) => {
-		setPhone(testPhone)
+		setPhone(testPhone);
 
-		if (testPhone.replace(/\D/g, '').length == 10 || testPhone.length == 0 ) {
-			setPhoneInvalid(false)
+		if (
+			testPhone.replace(/\D/g, "").length == 10 ||
+			testPhone.length == 0
+		) {
+			setPhoneInvalid(false);
 		} else {
-			setPhoneInvalid(true)
+			setPhoneInvalid(true);
 		}
-	}
+	};
 
 	return (
 		<GoodView>
 			<SafeAreaView style={{ padding: 10, gap: 10, flex: 1 }}>
-				<Text variant="headlineMedium" style={{fontWeight: 'bold'}}>{info.title.replace(" REMOTE", "")}</Text>
+				<Text variant="headlineMedium" style={{ fontWeight: "bold" }}>
+					{info.title.replace(" REMOTE", "")}
+				</Text>
 				<Divider />
-				<TextInput error={nameInvalid} value={name} onChangeText={text => validateName(text)} mode="outlined" label="Name (Required)"/>
-				<TextInput error={emailInvalid} value={email} onChangeText={text => validateEmail(text)} mode="outlined" label="Email (Required)"/>
-				<TextInput error={phoneInvalid} value={phone} onChangeText={text => validatePhone(text)} mode="outlined" label="Phone (Optional)"/>
+				<TextInput
+					error={nameInvalid}
+					value={name}
+					onChangeText={(text) => validateName(text)}
+					mode="outlined"
+					label="Name (Required)"
+				/>
+				<TextInput
+					error={emailInvalid}
+					value={email}
+					onChangeText={(text) => validateEmail(text)}
+					mode="outlined"
+					label="Email (Required)"
+				/>
+				<TextInput
+					error={phoneInvalid}
+					value={phone}
+					onChangeText={(text) => validatePhone(text)}
+					mode="outlined"
+					label="Phone (Optional)"
+				/>
 			</SafeAreaView>
 		</GoodView>
 	);

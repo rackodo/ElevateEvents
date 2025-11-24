@@ -2,6 +2,7 @@ import { useCallback } from "react";
 
 export function useRegister() {
 	const register = useCallback(async ({ eventId, name, email, phone }) => {
+		
 		try {
 			const res = await fetch(
 				"https://grmobile.onrender.com/registrations",
@@ -14,10 +15,10 @@ export function useRegister() {
 					body: `{"eventId": ${eventId},"name": "${name}","email": "${email}"${phone.length ? `",phone": ${phone}` : ""}}`
 				}
 			);
-			const response = await res.json();
 			const status = await res.status;
+			return status;
 		} catch (e) {
-			return;
+			return 999;
 		}
 	});
 

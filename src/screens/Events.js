@@ -16,7 +16,6 @@ import {
 	Chip,
 	IconButton,
 	Searchbar,
-	SegmentedButtons,
 	Text
 } from "react-native-paper";
 import { DatePickerModal } from "react-native-paper-dates";

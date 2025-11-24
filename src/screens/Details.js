@@ -6,7 +6,7 @@ import { useDynamicTheme } from "@/theme";
 import { useNavigation } from "@react-navigation/native";
 import moment from "moment";
 import { View } from "react-native";
-import { Button, Divider, ProgressBar, Text } from "react-native-paper";
+import { Button, Divider, Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Details({ route }) {

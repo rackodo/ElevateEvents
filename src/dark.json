@@ -17,6 +17,7 @@
 		"errorContainer": "rgb(147, 0, 10)",
 		"onErrorContainer": "rgb(255, 180, 171)",
 		"background": "rgb(26, 28, 30)",
+		"backgroundTransparent": "rgba(26, 28, 30, 0)",
 		"onBackground": "rgb(226, 226, 229)",
 		"surface": "rgb(26, 28, 30)",
 		"onSurface": "rgb(226, 226, 229)",

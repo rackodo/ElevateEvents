@@ -4,7 +4,7 @@ import Register from "@/screens/Register";
 import Settings from "@/screens/Settings";
 import Today from "@/screens/Today";
 
-import theme from "@/theme";
+import { useDynamicTheme } from "@/theme";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -15,6 +15,8 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function Tabs() {
+	const theme = useDynamicTheme();
+
 	return (
 		<Tab.Navigator
 			screenOptions={({ route }) => ({

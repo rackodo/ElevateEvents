@@ -1,10 +1,12 @@
-import theme from "@/theme";
+import { useDynamicTheme } from "@/theme";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { View } from "react-native";
 import { Text } from "react-native-paper";
 
 export default function IconText({ name, text, right, ...props }) {
+	const theme = useDynamicTheme();
+
 	return (
 		<View
 			style={[

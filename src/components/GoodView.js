@@ -1,13 +1,19 @@
-import theme from "@/theme";
+import { useDynamicTheme } from "@/theme";
 
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function GoodView({ children, style, ...props }) {
+	const theme = useDynamicTheme();
+
 	return (
 		<SafeAreaView
 			edges={["left", "top", "right"]}
-			style={[styles.goodView, style]}
+			style={[
+				styles.goodView,
+				{ backgroundColor: theme.colors.background },
+				style
+			]}
 			{...props}
 		>
 			{children}
@@ -15,6 +21,4 @@ export default function GoodView({ children, style, ...props }) {
 	);
 }
 
-const styles = StyleSheet.create({
-	goodView: { flex: 1, gap: 10, backgroundColor: theme.colors.background }
-});
+const styles = StyleSheet.create({ goodView: { flex: 1, gap: 10 } });

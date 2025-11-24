@@ -1,9 +1,7 @@
 import GoodView from "@/components/GoodView";
 import IconText from "@/components/IconText";
 
-import { registerEvent } from "@/hooks/registerEvent";
-
-import theme from "@/theme";
+import { useDynamicTheme } from "@/theme";
 
 import { useNavigation } from "@react-navigation/native";
 import moment from "moment";
@@ -12,9 +10,8 @@ import { Button, Divider, ProgressBar, Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Details({ route }) {
+	const theme = useDynamicTheme();
 	const { info } = route.params;
-
-	const { register } = registerEvent();
 
 	const navigation = useNavigation();
 
@@ -140,7 +137,9 @@ export default function Details({ route }) {
 							navigation.navigate("Register", { info })
 						}
 					>
-						Register
+						{date > firstTime
+							? "Cannot register for a past event"
+							: "Register"}
 					</Button>
 				</View>
 			</SafeAreaView>

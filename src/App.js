@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 
-import theme from "@/theme";
+import { useDynamicTheme } from "@/theme";
 
 import { registerRootComponent } from "expo";
 import { StatusBar } from "expo-status-bar";
@@ -10,6 +10,8 @@ import { en, registerTranslation } from "react-native-paper-dates";
 registerTranslation("en", en);
 
 export default function App() {
+	const theme = useDynamicTheme();
+
 	return (
 		<PaperProvider theme={theme}>
 			<Layout />

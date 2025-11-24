@@ -5,7 +5,7 @@ import GoodView from "@/components/GoodView";
 
 import { pullEvents } from "@/hooks/pullEvents";
 
-import theme from "@/theme";
+import { useDynamicTheme } from "@/theme";
 
 import { LinearGradient } from "expo-linear-gradient";
 import moment from "moment";
@@ -22,6 +22,8 @@ import {
 import { DatePickerModal } from "react-native-paper-dates";
 
 function Events() {
+	const theme = useDynamicTheme();
+
 	const { events, loading, refresh } = pullEvents(); // ← replaced fetching logic
 
 	const [query, setQuery] = useState("");
@@ -132,7 +134,11 @@ function Events() {
 						<>
 							<View style={{ flexDirection: "row", gap: 10 }}>
 								<Button
-									mode={range.startDate || range.endDate ? "contained" : "outlined"}
+									mode={
+										range.startDate || range.endDate
+											? "contained"
+											: "outlined"
+									}
 									style={{ flex: 1, borderRadius: 10 }}
 									onPress={() => setModalOpen(true)}
 								>
@@ -202,7 +208,7 @@ function Events() {
 								<LinearGradient
 									colors={[
 										theme.colors.background,
-										"rgba(26, 28, 30, 0)"
+										theme.colors.backgroundTransparent
 									]}
 									start={{ x: 0, y: 0 }}
 									end={{ x: 1, y: 0 }}
@@ -219,7 +225,7 @@ function Events() {
 								{/* Right gradient */}
 								<LinearGradient
 									colors={[
-										"rgba(26, 28, 30, 0)",
+										theme.colors.backgroundTransparent,
 										theme.colors.background
 									]}
 									start={{ x: 0, y: 0 }}

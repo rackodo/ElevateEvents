@@ -2,7 +2,7 @@ import { memo } from "react";
 
 import IconText from "@/components/IconText";
 
-import theme from "@/theme";
+import { useDynamicTheme } from "@/theme";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -11,6 +11,7 @@ import { View } from "react-native";
 import { Card, Text } from "react-native-paper";
 
 function EventCard({ info, from }) {
+	const theme = useDynamicTheme();
 	const navigation = useNavigation();
 
 	const date = moment().unix();
@@ -23,7 +24,6 @@ function EventCard({ info, from }) {
 				padding: 15,
 				opacity: date > lastTime ? 0.5 : 1
 			}}
-			disabled={date > lastTime}
 			onPress={() =>
 				navigation.navigate("Details", { info: info, fromTab: from })
 			}

@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-export function registerEvent() {
+export function useRegister() {
 	const register = useCallback(async ({ eventId, name, email, phone }) => {
 		try {
 			const res = await fetch(
@@ -23,3 +23,5 @@ export function registerEvent() {
 
 	return { register };
 }
+
+export default useRegister;

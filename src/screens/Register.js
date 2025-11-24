@@ -2,8 +2,10 @@ import { useState } from "react";
 
 import GoodView from "@/components/GoodView";
 
+import useRegister from "@/hooks/useRegister";
+
 import { View } from "react-native";
-import { Divider, Text, TextInput } from "react-native-paper";
+import { Button, Divider, Text, TextInput } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Register({ route }) {
@@ -16,7 +18,9 @@ export default function Register({ route }) {
 	const [nameInvalid, setNameInvalid] = useState(false);
 	const [emailInvalid, setEmailInvalid] = useState(false);
 	const [phoneInvalid, setPhoneInvalid] = useState(false);
-	false;
+
+	const { register } = useRegister();
+
 	const validateName = (testName) => {
 		setName(testName);
 
@@ -78,6 +82,22 @@ export default function Register({ route }) {
 					mode="outlined"
 					label="Phone (Optional)"
 				/>
+				<View style={{ justifyContent: "flex-end", flex: 1 }}>
+					<Button
+						mode="contained"
+						style={{ borderRadius: 10 }}
+						onPress={() =>
+							register({
+								eventId: info.id,
+								name: name,
+								email: email,
+								phone: phone.length ? phone : ""
+							})
+						}
+					>
+						Confirm Registration
+					</Button>
+				</View>
 			</SafeAreaView>
 		</GoodView>
 	);

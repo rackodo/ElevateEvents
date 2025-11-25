@@ -22,4 +22,4 @@ Streamline the process of accessing events and registering participation through
 
 ## Status
 
-**In Progress** (as of 18/11/2025).
+**Awaiting Feedback** (as of 25/11/2025).

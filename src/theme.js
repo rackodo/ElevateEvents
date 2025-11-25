@@ -1,10 +1,10 @@
 // theme.js
 import { createContext, useContext, useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import dark from "@/dark.json";
 import light from "@/light.json";
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Appearance } from "react-native";
 import { MD3DarkTheme, MD3LightTheme } from "react-native-paper";
 
@@ -22,7 +22,7 @@ export function ThemeProvider({ children }) {
 		(async () => {
 			try {
 				const saved = await AsyncStorage.getItem(STORAGE_KEY);
-				if (saved) setMode(saved);      // saved = "light" | "dark" | "system"
+				if (saved) setMode(saved); // saved = "light" | "dark" | "system"
 			} catch (e) {
 				console.warn("Failed to load theme", e);
 			}
@@ -53,11 +53,11 @@ export function ThemeProvider({ children }) {
 		realScheme === "light"
 			? {
 					...MD3LightTheme,
-					colors: { ...MD3LightTheme.colors, ...light.colors },
+					colors: { ...MD3LightTheme.colors, ...light.colors }
 				}
 			: {
 					...MD3DarkTheme,
-					colors: { ...MD3DarkTheme.colors, ...dark.colors },
+					colors: { ...MD3DarkTheme.colors, ...dark.colors }
 				};
 
 	// Do not render until theme is loaded → prevents theme flashing

@@ -21,7 +21,7 @@ import {
 import { DatePickerModal } from "react-native-paper-dates";
 
 function Events() {
-	const theme = useDynamicTheme();
+	const { theme } = useDynamicTheme();
 
 	const { events, loading, refresh } = pullEvents(); // ← replaced fetching logic
 

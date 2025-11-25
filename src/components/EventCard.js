@@ -11,7 +11,7 @@ import { View } from "react-native";
 import { Card, Text } from "react-native-paper";
 
 function EventCard({ info, from }) {
-	const theme = useDynamicTheme();
+	const { theme } = useDynamicTheme();
 	const navigation = useNavigation();
 
 	const date = moment().unix();

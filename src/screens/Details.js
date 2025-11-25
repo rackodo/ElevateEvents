@@ -10,7 +10,7 @@ import { Button, Divider, Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Details({ route }) {
-	const theme = useDynamicTheme();
+	const { theme } = useDynamicTheme();
 	const { info } = route.params;
 
 	const navigation = useNavigation();

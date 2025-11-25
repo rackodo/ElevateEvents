@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function Tabs() {
-	const theme = useDynamicTheme();
+	const { theme } = useDynamicTheme();
 
 	return (
 		<Tab.Navigator

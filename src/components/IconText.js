@@ -5,7 +5,7 @@ import { View } from "react-native";
 import { Text } from "react-native-paper";
 
 export default function IconText({ name, text, right, ...props }) {
-	const theme = useDynamicTheme();
+	const { theme } = useDynamicTheme();
 
 	return (
 		<View

@@ -7,7 +7,7 @@ import { pullEvents } from "@/hooks/pullEvents";
 
 import { useNavigation } from "@react-navigation/native";
 import moment from "moment";
-import { View } from "react-native";
+import { Image, View } from "react-native";
 import { Button, Divider, Text } from "react-native-paper";
 
 export default function Today() {
@@ -42,6 +42,9 @@ export default function Today() {
 				{filteredEvents.map((event) => (
 					<EventCard key={event.id} info={event} from="Today" />
 				))}
+			</View>
+			<View style={{ alignItems: 'center', marginTop: 100}}>
+				<Image style={{width: 200, height: 100}} source={require('@/icon.png')} />
 			</View>
 		</GoodView>
 	);
